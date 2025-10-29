@@ -1,70 +1,163 @@
-/* ======== RESET BÁSICO ======== */
+/* Estilo geral */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
-  background-color: #f7f9fc;
-  color: #333;
-  line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fafc;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* ======== CONTAINER ======== */
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 0 auto;
+/* Navbar */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* ======== CABEÇALHO ======== */
-.site-header {
-  background-color: #004aad;
-  color: #fff;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.site-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2a73ff;
 }
 
-.site-header h1 {
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
-/* ======== MENU ======== */
-#mainNav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-#mainNav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+.nav-links a:hover {
+    color: #2a73ff;
 }
 
-#mainNav a:hover {
-  color: #cce0ff;
+/* Hero */
+.hero {
+    background: linear-gradient(to right, #2a73ff, #6ec1e4);
+    color: #fff;
+    text-align: center;
+    padding: 6rem 1rem;
 }
 
-/* ======== BOTÃO MENU MOBILE ======== */
-#menuToggle {
-  display: none;
-  background: none;
-  borde
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background: #fff;
+    color: #2a73ff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #e0ebff;
+}
+
+/* Seção Sobre */
+.sobre {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.sobre h2 {
+    font-size: 2rem;
+    color: #2a73ff;
+    margin-bottom: 1rem;
+}
+
+.sobre p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Carrossel */
+.galeria {
+    background: #f0f4ff;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.galeria h2 {
+    font-size: 2rem;
+    color: #2a73ff;
+    margin-bottom: 2rem;
+}
+
+.carousel {
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #2a73ff;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .sobre p {
+        font-size: 1rem;
+    }
+}
