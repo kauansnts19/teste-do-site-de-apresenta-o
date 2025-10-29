@@ -1,111 +1,70 @@
-/* ====== RESET BÁSICO ====== */
+/* ======== RESET BÁSICO ======== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", Arial, sans-serif;
-  background-color: #f5f6fa;
+  background-color: #f7f9fc;
   color: #333;
   line-height: 1.6;
 }
 
-/* ====== CONTAINER GERAL ====== */
+/* ======== CONTAINER ======== */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* ====== SEÇÃO DE RECURSOS (features) ====== */
-section {
-  padding: 60px 20px;
+/* ======== CABEÇALHO ======== */
+.site-header {
+  background-color: #004aad;
+  color: #fff;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-section li {
-  list-style-type: "✔️ ";
-  font-size: 1.1rem;
-  color: #2c3e50;
-  margin: 10px 0;
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ====== SEÇÃO DOWNLOAD ====== */
-#download {
-  background: linear-gradient(135deg, #4a90e2, #007bff);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-  border-radius: 10px;
-  margin: 40px auto;
+.site-header h1 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
 
-#download h2 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+/* ======== MENU ======== */
+#mainNav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-#download p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-}
-
-/* ====== BOTÃO DE DOWNLOAD ====== */
-.download-large {
-  display: inline-block;
-  background-color: #fff;
-  color: #007bff;
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
+#mainNav a {
+  color: #fff;
   text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.download-large:hover {
-  background-color: #e9f3ff;
-  transform: scale(1.05);
+#mainNav a:hover {
+  color: #cce0ff;
 }
 
-/* ====== RODAPÉ ====== */
-.site-footer {
-  background-color: #222;
-  color: #ddd;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 0.95rem;
-  margin-top: 60px;
-}
-
-.site-footer p {
-  margin: 0;
-}
-
-.site-footer a {
-  color: #4a90e2;
-  text-decoration: none;
-}
-
-/* ====== RESPONSIVIDADE ====== */
-@media (max-width: 768px) {
-  #download h2 {
-    font-size: 1.8rem;
-  }
-
-  #download p {
-    font-size: 1rem;
-  }
-
-  .download-large {
-    width: 80%;
-    padding: 12px;
-    font-size: 1rem;
-  }
-
-  section li {
-    font-size: 1rem;
-  }
-}
+/* ======== BOTÃO MENU MOBILE ======== */
+#menuToggle {
+  display: none;
+  background: none;
+  borde
