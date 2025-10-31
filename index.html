@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduConnect</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- >>> COLEI AQUI <<< Importação dos ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <!-- Navegação -->
@@ -12,11 +15,29 @@
         <nav class="navbar">
             <div class="logo">EduConnect</div>
             <ul class="nav-links">
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li>
+                    <a href="#sobre">
+                        <i data-lucide="book-open"></i> <!-- Ícone "Sobre" -->
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="#galeria">
+                        <i data-lucide="image"></i> <!-- Ícone "Galeria" -->
+                        Galeria
+                    </a>
+                </li>
+                <li>
+                    <a href="#contato">
+                        <i data-lucide="mail"></i> <!-- Ícone "Contato" -->
+                        Contato
+                    </a>
+                </li>
             </ul>
         </nav>
+
+        <!-- Botão modo escuro -->
+        <button id="theme-toggle">🌙</button>
     </header>
 
     <!-- Seção Hero -->
@@ -37,7 +58,7 @@
         </p>
     </section>
 
-    <!-- Carrossel de Imagens -->
+    <!-- Galeria -->
     <section id="galeria" class="galeria">
         <h2>Galeria</h2>
         <div class="carousel">
@@ -51,11 +72,11 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desinvolvimento De Sistemas.</p>
+        <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
     </footer>
 
+    <!-- Script do carrossel -->
     <script>
-        // Simples animação de carrossel automático
         const track = document.querySelector('.carousel-track');
         let index = 0;
 
@@ -63,6 +84,27 @@
             index = (index + 1) % 3;
             track.style.transform = `translateX(-${index * 100}%)`;
         }, 3000);
+    </script>
+
+    <!-- Script do modo escuro -->
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+
+    <!-- >>> COLEI AQUI <<< Inicializa os ícones Lucide -->
+    <script>
+        lucide.createIcons();
     </script>
 </body>
 </html>
