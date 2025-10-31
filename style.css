@@ -1,10 +1,64 @@
-/* >>> COLEI AQUI <<< Estilos dos ícones no menu */
+/* === RESET GERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === ESTILO BASE === */
+body {
+  background-color: #ffffff;
+  color: #222;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === CABEÇALHO === */
+header {
+  background-color: #1e90ff;
+  color: white;
+  padding: 15px 30px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #e0e0e0;
+}
+
+/* ÍCONES DO MENU */
 .nav-links i {
   width: 18px;
   height: 18px;
-  margin-right: 6px;
   stroke-width: 2.2;
-  vertical-align: middle;
   transition: transform 0.2s ease;
 }
 
@@ -12,14 +66,148 @@
   transform: scale(1.2);
 }
 
-/* Deixa o botão do modo escuro alinhado com o menu */
+/* === BOTÃO DE MODO ESCURO === */
 #theme-toggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 25px;
   background: none;
   border: none;
+  color: white;
   font-size: 1.5rem;
   cursor: pointer;
-  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* === SEÇÃO HERO === */
+.hero {
+  background: linear-gradient(to right, #1e90ff, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: white;
+  color: #1e90ff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn:hover {
+  background: #f2f2f2;
+  transform: scale(1.05);
+}
+
+/* === SEÇÃO SOBRE === */
+.sobre {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1e90ff;
+}
+
+.sobre p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* === GALERIA / CARROSSEL === */
+.galeria {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.galeria h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #1e90ff;
+}
+
+.carousel {
+  overflow: hidden;
+  max-width: 750px;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* === RODAPÉ === */
+footer {
+  background-color: #1e90ff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+/* === MODO ESCURO === */
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark-mode header {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(to right, #0d47a1, #1976d2);
+}
+
+body.dark-mode .btn {
+  background: #1e88e5;
+  color: white;
+}
+
+body.dark-mode .btn:hover {
+  background: #1565c0;
+}
+
+body.dark-mode footer {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .nav-links li a {
+  color: #e0e0e0;
+}
+
+body.dark-mode #theme-toggle {
+  color: #f5f5f5;
 }
