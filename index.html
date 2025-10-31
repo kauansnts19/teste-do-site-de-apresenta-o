@@ -6,7 +6,7 @@
     <title>EduConnect</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- >>> COLEI AQUI <<< Importação dos ícones Lucide -->
+    <!-- Ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -17,27 +17,31 @@
             <ul class="nav-links">
                 <li>
                     <a href="#sobre">
-                        <i data-lucide="book-open"></i> <!-- Ícone "Sobre" -->
+                        <i data-lucide="book-open"></i>
                         Sobre
                     </a>
                 </li>
                 <li>
                     <a href="#galeria">
-                        <i data-lucide="image"></i> <!-- Ícone "Galeria" -->
+                        <i data-lucide="image"></i>
                         Galeria
                     </a>
                 </li>
                 <li>
                     <a href="#contato">
-                        <i data-lucide="mail"></i> <!-- Ícone "Contato" -->
+                        <i data-lucide="mail"></i>
                         Contato
                     </a>
                 </li>
+
+                <!-- Botão modo escuro alinhado -->
+                <li>
+                    <button id="theme-toggle" title="Alternar modo escuro">
+                        <i data-lucide="moon"></i>
+                    </button>
+                </li>
             </ul>
         </nav>
-
-        <!-- Botão modo escuro -->
-        <button id="theme-toggle">🌙</button>
     </header>
 
     <!-- Seção Hero -->
@@ -102,7 +106,7 @@
         });
     </script>
 
-    <!-- >>> COLEI AQUI <<< Inicializa os ícones Lucide -->
+    <!-- Inicializa os ícones Lucide -->
     <script>
         lucide.createIcons();
     </script>
