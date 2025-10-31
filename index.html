@@ -64,18 +64,5 @@
             track.style.transform = `translateX(-${index * 100}%)`;
         }, 3000);
     </script>
-    <script> const toggle = document.getElementById('theme-toggle');
-  const body = document.body;
-
-  // Verifica se o usuário já tinha um tema salvo
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-  }
-
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-  });</script>
 </body>
 </html>
