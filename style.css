@@ -72,7 +72,7 @@ header {
   transform: scale(1.2);
 }
 
-/* === BOTÃO DE MODO ESCURO === */
+/* === BOTÃO DE MODO ESCURO (ALINHADO E MINIMALISTA) === */
 #theme-toggle {
   background: none;
   border: none;
@@ -82,8 +82,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
   transition: transform 0.2s ease, color 0.3s ease;
+  margin-left: 12px; /* pequeno espaço após "Contato" */
+  padding: 0;
 }
 
 #theme-toggle i {
