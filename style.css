@@ -37,7 +37,13 @@ header {
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 20px;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links li a {
@@ -68,19 +74,27 @@ header {
 
 /* === BOTÃO DE MODO ESCURO === */
 #theme-toggle {
-  position: absolute;
-  top: 18px;
-  right: 360px;
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+#theme-toggle i {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
 }
 
 #theme-toggle:hover {
-  transform: rotate(20deg);
+  transform: scale(1.2);
+  color: #e0e0e0;
 }
 
 /* === SEÇÃO HERO === */
