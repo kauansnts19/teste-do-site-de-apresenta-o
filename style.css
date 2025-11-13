@@ -168,9 +168,9 @@ header {
 /* === 🖼️ CARROSSEL AJUSTADO PARA 1600x1200 === */
 .carousel {
   overflow: hidden;
-  width: 1600px;      /* Largura da imagem */
-  height: 1200px;     /* Altura da imagem */
-  margin: auto;
+  width: 90%;      /* Largura da imagem */
+  height: 800px;     /* Altura da imagem */
+  margin:40 auto;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
