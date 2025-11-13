@@ -170,7 +170,7 @@ header {
   text-align: center;
 }
 
-/* === TÍTULO GALERIA === */
+/* === TÍTULO GALERIA - MOSTRA APENAS A PRIMEIRA LETRA === */
 .titulo-galeria {
   font-size: 2.4rem;
   color: #1e90ff;
@@ -179,6 +179,16 @@ header {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 5px rgba(30,144,255,0.3);
+  display: inline-block;
+  position: relative;
+}
+
+/* Esconde todas as letras após a primeira usando ::after */
+.titulo-galeria::after {
+  content: attr(data-text);
+  color: transparent;
+  position: absolute;
+  left: 1.2em; /* ajusta para não sobrepor a primeira letra */
 }
 
 /* === CARROSSEL === */
