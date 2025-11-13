@@ -165,14 +165,15 @@ header {
   color: #1e90ff;
 }
 
-/* === 🖼️ CARROSSEL AJUSTADO PARA 1600x1200 === */
+/* === 🖼️ CARROSSEL AUTOMÁTICO E AJUSTÁVEL === */
 .carousel {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
-  width: 90%;      /* Largura da imagem */
-  height: 800px;     /* Altura da imagem */
-  margin:40 auto;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: height 0.5s ease; /* anima altura para imagens diferentes */
 }
 
 .carousel-track {
@@ -181,10 +182,12 @@ header {
 }
 
 .carousel img {
-  width: 1600px;
-  height: 1200px;
-  object-fit: cover;  /* Mantém proporção sem distorcer */
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  display: block;
   border-radius: 12px;
+  object-fit: contain; /* preserva proporção original sem distorcer */
 }
 
 /* === RODAPÉ === */
@@ -237,17 +240,9 @@ body.dark-mode #theme-toggle {
     padding: 12px 25px;
   }
 
-  /* 🔹 Redimensiona o carrossel para telas menores */
   .carousel {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .carousel img {
-    width: 100%;
-    height: auto;
+    width: 95%;
+    max-width: 800px;
   }
 }
 
@@ -294,22 +289,9 @@ body.dark-mode #theme-toggle {
     padding: 60px 15px;
   }
 
-  .sobre h2,
-  .galeria h2 {
-    font-size: 1.6rem;
-  }
-
-  /* 🔹 Redimensiona o carrossel */
   .carousel {
     width: 100%;
     max-width: 700px;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .carousel img {
-    width: 100%;
-    height: auto;
   }
 }
 
@@ -335,16 +317,8 @@ body.dark-mode #theme-toggle {
     width: 90%;
   }
 
-  /* 🔹 Carrossel responsivo em celulares */
   .carousel {
     width: 100%;
     max-width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-
-  .carousel img {
-    width: 100%;
-    height: auto;
   }
 }

@@ -1,114 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduConnect</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect</title>
+  <link rel="stylesheet" href="style.css">
 
-    <!-- Ícones Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Navegação -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">EduConnect</div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#sobre">
-                        <i data-lucide="book-open"></i>
-                        Sobre
-                    </a>
-                </li>
-                <li>
-                    <a href="#galeria">
-                        <i data-lucide="image"></i>
-                        Galeria
-                    </a>
-                </li>
-                <li>
-                    <a href="#contato">
-                        <i data-lucide="mail"></i>
-                        Contato
-                    </a>
-                </li>
+  <!-- Navegação -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">EduConnect</div>
+      <ul class="nav-links">
+        <li><a href="#sobre"><i data-lucide="book-open"></i>Sobre</a></li>
+        <li><a href="#galeria"><i data-lucide="image"></i>Galeria</a></li>
+        <li><a href="#contato"><i data-lucide="mail"></i>Contato</a></li>
+        <li>
+          <button id="theme-toggle" title="Alternar modo escuro">
+            <i data-lucide="moon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-                <!-- Botão modo escuro alinhado -->
-                <li>
-                    <button id="theme-toggle" title="Alternar modo escuro">
-                        <i data-lucide="moon"></i>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Seção Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bem-vindo ao EduConnect</h1>
+      <p>Conectando alunos, professores e escolas em um só lugar.</p>
+      <a href="#sobre" class="btn">Saiba Mais</a>
+    </div>
+  </section>
 
-    <!-- Seção Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bem-vindo ao EduConnect</h1>
-            <p>Conectando alunos, professores e escolas em um só lugar.</p>
-            <a href="#sobre" class="btn">Saiba Mais</a>
-        </div>
-    </section>
+  <!-- Sobre o App -->
+  <section id="sobre" class="sobre">
+    <h2>Nossa História</h2>
+    <p>
+      O <strong>EduConnect</strong> nasceu em 2025, criado por um grupo de estudantes do 2°Ano do Colégio Estadual Marechal Costa e Silva,
+      atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado. 
+      A missão do aplicativo é facilitar a comunicação entre pais, professores e alunos,
+      promovendo um ambiente colaborativo e acessível para todos.
+    </p>
+  </section>
 
-    <!-- Sobre o App -->
-    <section id="sobre" class="sobre">
-        <h2>Nossa História</h2>
-        <p>
-            O <strong>EduConnect</strong> nasceu em 2025, criado por um grupo de estudantes do 2°Ano do Colégio Estadual Marechal Costa e Silva, atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado. 
-            A missão do aplicativo é facilitar a comunicação entre pais, professores e alunos, promovendo um ambiente colaborativo e acessível para todos.
-        </p>
-    </section>
+  <!-- Galeria -->
+  <section id="galeria" class="galeria">
+    <h2>Galeria</h2>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="imagens/IMG-20251104-WA0012 (1).jpg" alt="Imagem 1">
+        <img src="imagens/IMG-20251029-WA0011.jpg" alt="Imagem 2">
+        <img src="imagens/IMG-20251029-WA0005.jpg" alt="Imagem 3">
+      </div>
+    </div>
+  </section>
 
-    <!-- Galeria -->
-    <section id="galeria" class="galeria">
-        <h2>Galeria</h2>
-        <div class="carousel">
-            <div class="carousel-track">
-                <img src="imagens/IMG-20251104-WA0012 (1).jpg" alt="Imagem 1">
-                <img src="imagens/IMG-20251029-WA0011.jpg" alt="Imagem 2">
-                <img src="imagens/IMG-20251029-WA0005.jpg" alt="Imagem 3">
-            </div>
-        </div>
-    </section>
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
+  </footer>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
-    </footer>
+  <!-- Script do carrossel -->
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const images = document.querySelectorAll('.carousel-track img');
+    const carousel = document.querySelector('.carousel');
+    let index = 0;
 
-    <!-- Script do carrossel -->
-    <script>
-        const track = document.querySelector('.carousel-track');
-        let index = 0;
+    // Função para atualizar altura do carrossel conforme a imagem atual
+    function ajustarAltura() {
+      const imgAtual = images[index];
+      carousel.style.height = imgAtual.height + 'px';
+    }
 
-        setInterval(() => {
-            index = (index + 1) % 3;
-            track.style.transform = `translateX(-${index * 100}%)`;
-        }, 3000);
-    </script>
+    // Espera todas as imagens carregarem antes de iniciar
+    window.addEventListener('load', () => {
+      ajustarAltura();
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        ajustarAltura();
+      }, 3000);
+    });
+  </script>
 
-    <!-- Script do modo escuro -->
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
+  <!-- Script do modo escuro -->
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-        }
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
 
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        });
-    </script>
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
 
-    <!-- Inicializa os ícones Lucide -->
-    <script>
-        lucide.createIcons();
-    </script>
+  <!-- Inicializa ícones -->
+  <script>lucide.createIcons();</script>
 </body>
 </html>
