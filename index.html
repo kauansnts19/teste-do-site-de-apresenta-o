@@ -17,10 +17,15 @@
       <ul class="nav-links">
         <li><a href="#sobre"><i data-lucide="book-open"></i>Sobre</a></li>
         <li><a href="#galeria"><i data-lucide="image"></i>Galeria</a></li>
-        <!-- 🔹 ALTERAÇÃO: botão Contato abre o e-mail -->
-        <li><a href="mailto:2ceduconnect@gmail.com?subject=Contato%20EduConnect&body=Olá,%20gostaria%20de%20entrar%20em%20contato." target="_blank">
-          <i data-lucide="mail"></i>Contato</a>
+
+        <!-- 🔹 CONTATO ABRE O GMAIL -->
+        <li>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=2ceduconnect@gmail.com&su=Contato%20EduConnect&body=Olá,%20gostaria%20de%20entrar%20em%20contato."
+             target="_blank" rel="noopener noreferrer">
+            <i data-lucide="mail"></i>Contato
+          </a>
         </li>
+
         <li>
           <button id="theme-toggle" title="Alternar modo escuro">
             <i data-lucide="moon"></i>
@@ -74,13 +79,13 @@
     const carousel = document.querySelector('.carousel');
     let index = 0;
 
-    // Função para atualizar altura do carrossel conforme a imagem atual
+    // Atualiza a altura do carrossel conforme a imagem atual
     function ajustarAltura() {
       const imgAtual = images[index];
       carousel.style.height = imgAtual.height + 'px';
     }
 
-    // Espera todas as imagens carregarem antes de iniciar
+    // Espera as imagens carregarem
     window.addEventListener('load', () => {
       ajustarAltura();
       setInterval(() => {
