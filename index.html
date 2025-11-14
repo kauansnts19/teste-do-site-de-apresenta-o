@@ -9,6 +9,11 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Fonte Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- PWA CONFIGURAÇÃO (APONTA PARA O APP REAL NO LOVABLE) -->
+  <link rel="manifest" href="https://eduplay-guide-41516.lovable.app/manifest.webmanifest">
+  <link rel="icon" href="https://eduplay-guide-41516.lovable.app/icon-192x192.png">
+  <meta name="theme-color" content="#4A90E2">
 </head>
 <body>
   <!-- Navegação -->
@@ -28,8 +33,8 @@
           </button>
         </li>
         <li>
-          <!-- BOTÃO DE INSTALAÇÃO/DOWNLOAD DO PWA -->
-          <button id="install-btn" class="download-btn">
+          <!-- BOTÃO DE INSTALAÇÃO DO PWA (RGB) -->
+          <button id="install-btn" class="download-btn" style="display: none;">
             <i data-lucide="download" class="download-icon"></i>
             <span class="download-text">Instalar App</span>
           </button>
@@ -133,7 +138,6 @@
       lucide.createIcons();
     }
 
-    // Carregar tema salvo
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
     }
@@ -148,60 +152,57 @@
     });
   </script>
 
-  <!-- INSTALAÇÃO DO PWA (com fallback para o app do GitHub) -->
+  <!-- INSTALAÇÃO DIRETA DO PWA (SEM ABRIR O SITE) -->
   <script>
-    let deferredPrompt;
+    let installPrompt = null;
     const installBtn = document.getElementById('install-btn');
     const textSpan = installBtn.querySelector('.download-text');
     const icon = installBtn.querySelector('.download-icon');
-    const originalText = textSpan.textContent;
-    const pwaUrl = 'https://eduplay-guide-41516.lovable.app'; // App do repositório GitHub
 
-    // Captura o evento de instalação
+    // Captura o evento do PWA real (do Lovable)
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'flex';
+      installPrompt = e;
+      installBtn.style.display = 'flex'; // Mostra o botão
     });
 
-    // Clique no botão
+    // Clique → instala direto
     installBtn.addEventListener('click', async () => {
-      if (deferredPrompt) {
-        // Tenta instalar como PWA
-        textSpan.textContent = 'Instalando...';
-        icon.setAttribute('data-lucide', 'loader');
-        lucide.createIcons();
+      if (!installPrompt) return;
 
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-
-        if (outcome === 'accepted') {
-          textSpan.textContent = 'Instalado!';
-          setTimeout(() => installBtn.style.display = 'none', 1500);
-        } else {
-          resetButton();
-        }
-        deferredPrompt = null;
-      } else {
-        // Fallback: abre o app do GitHub
-        textSpan.textContent = 'Abrindo App...';
-        icon.setAttribute('data-lucide', 'external-link');
-        lucide.createIcons();
-        window.open(pwaUrl, '_blank');
-        setTimeout(resetButton, 2000);
-      }
-    });
-
-    function resetButton() {
-      textSpan.textContent = originalText;
-      icon.setAttribute('data-lucide', 'download');
+      textSpan.textContent = 'Instalando...';
+      icon.setAttribute('data-lucide', 'loader');
       lucide.createIcons();
-    }
+
+      installPrompt.prompt();
+      const { outcome } = await installPrompt.userChoice;
+
+      if (outcome === 'accepted') {
+        textSpan.textContent = 'Instalado!';
+        setTimeout(() => {
+          installBtn.style.display = 'none';
+        }, 1500);
+      } else {
+        textSpan.textContent = 'Instalar App';
+        icon.setAttribute('data-lucide', 'download');
+        lucide.createIcons();
+      }
+
+      installPrompt = null;
+    });
 
     // Esconde se já instalado
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
     });
+
+    // (Opcional) Service Worker do app real
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js')
+          .catch(() => {});
+      });
+    }
   </script>
 
   <!-- Inicializa ícones -->
