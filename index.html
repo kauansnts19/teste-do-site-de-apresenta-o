@@ -28,7 +28,7 @@
           </button>
         </li>
         <li>
-          <!-- BOTÃO DE INSTALAÇÃO DO PWA -->
+          <!-- BOTÃO DE INSTALAÇÃO/DOWNLOAD DO PWA -->
           <button id="install-btn" class="download-btn">
             <i data-lucide="download" class="download-icon"></i>
             <span class="download-text">Instalar App</span>
@@ -148,54 +148,57 @@
     });
   </script>
 
-  <!-- INSTALAÇÃO DO PWA -->
+  <!-- INSTALAÇÃO DO PWA (com fallback para o app do GitHub) -->
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('install-btn');
     const textSpan = installBtn.querySelector('.download-text');
     const icon = installBtn.querySelector('.download-icon');
     const originalText = textSpan.textContent;
+    const pwaUrl = 'https://eduplay-guide-41516.lovable.app'; // App do repositório GitHub
 
     // Captura o evento de instalação
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      installBtn.style.display = 'flex'; // Mostra o botão
+      installBtn.style.display = 'flex';
     });
 
-    // Clique no botão de instalação
+    // Clique no botão
     installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        alert('O app já está instalado ou não está disponível para instalação.');
-        return;
-      }
-
-      // Mostra feedback
-      textSpan.textContent = 'Instalando...';
-      icon.setAttribute('data-lucide', 'loader');
-      lucide.createIcons();
-
-      // Dispara o prompt de instalação
-      deferredPrompt.prompt();
-
-      // Espera resposta do usuário
-      const { outcome } = await deferredPrompt.userChoice;
-
-      if (outcome === 'accepted') {
-        textSpan.textContent = 'Instalado!';
-        setTimeout(() => {
-          installBtn.style.display = 'none'; // Esconde após instalar
-        }, 1500);
-      } else {
-        textSpan.textContent = originalText;
-        icon.setAttribute('data-lucide', 'download');
+      if (deferredPrompt) {
+        // Tenta instalar como PWA
+        textSpan.textContent = 'Instalando...';
+        icon.setAttribute('data-lucide', 'loader');
         lucide.createIcons();
-      }
 
-      deferredPrompt = null;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+
+        if (outcome === 'accepted') {
+          textSpan.textContent = 'Instalado!';
+          setTimeout(() => installBtn.style.display = 'none', 1500);
+        } else {
+          resetButton();
+        }
+        deferredPrompt = null;
+      } else {
+        // Fallback: abre o app do GitHub
+        textSpan.textContent = 'Abrindo App...';
+        icon.setAttribute('data-lucide', 'external-link');
+        lucide.createIcons();
+        window.open(pwaUrl, '_blank');
+        setTimeout(resetButton, 2000);
+      }
     });
 
-    // Esconde o botão se já estiver instalado
+    function resetButton() {
+      textSpan.textContent = originalText;
+      icon.setAttribute('data-lucide', 'download');
+      lucide.createIcons();
+    }
+
+    // Esconde se já instalado
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
     });
