@@ -91,8 +91,8 @@ header {
   overflow: hidden;
   font-size: 1rem;
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  background-color: #fff; /* modo claro */
-  color: #000; /* texto modo claro */
+  background-color: #fff;
+  color: #000;
 }
 
 .download-btn:hover {
@@ -108,10 +108,10 @@ header {
   animation: rgbAnim 4s linear infinite;
 }
 
-/* Ícone de download independente */
+/* Ícone de download */
 .download-btn .download-icon {
   transition: color 0.3s ease;
-  color: inherit; /* herdará cor do botão */
+  color: inherit;
 }
 
 /* 🌈 Animação RGB */
@@ -174,7 +174,7 @@ header {
   text-align: center;
 }
 
-/* === TÍTULOS === */
+/* === TÍTULOS (GALERIA/VIDEO) === */
 .titulo-galeria,
 .video-title {
   font-size: 2.4rem;
@@ -196,7 +196,7 @@ header {
   flex-wrap: wrap;
 }
 
-/* === ESPAÇO PARA INFORMAÇÕES DO APP === */
+/* === FUNCIONALIDADES === */
 .app-info {
   max-width: 300px;
   text-align: center;
@@ -206,6 +206,7 @@ header {
   color: #1e90ff;
   margin-bottom: 15px;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .app-info p {
@@ -225,7 +226,7 @@ header {
 /* === CARROSSEL === */
 .carousel {
   width: 100%;
-  max-width: 650px; /* aumentado */
+  max-width: 650px;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -247,12 +248,17 @@ header {
   border-radius: 20px;
 }
 
-/* === PHONE MOCKUP === */
+/* === MOCKUP === */
 .video-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
+
+.video-title {
+  color: #1e90ff;
+  text-align: center;
 }
 
 .phone-mockup {
@@ -277,7 +283,6 @@ header {
   border-radius: 3px;
 }
 
-/* === TELA DO CELULAR === */
 .screen {
   width: 100%;
   height: 100%;
@@ -342,7 +347,7 @@ footer {
 
 .dark-mode .app-info h3,
 .dark-mode .video-title {
-  color: #f5f5f5;
+  color: #1e90ff;
 }
 
 .dark-mode .app-info p {
@@ -359,7 +364,7 @@ footer {
 
 .dark-mode .download-btn {
   background-color: #222;
-  color: #fff; /* texto e ícone */
+  color: #fff;
 }
 
 .download-btn .download-icon {
