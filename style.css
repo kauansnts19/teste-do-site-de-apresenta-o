@@ -78,7 +78,7 @@ header {
   transform: scale(1.2);
 }
 
-/* === BOTÃO DE DOWNLOAD === */
+/* === BOTÃO DE INSTALAÇÃO (PWA) === */
 .download-btn {
   display: flex;
   align-items: center;
@@ -93,6 +93,8 @@ header {
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
   background-color: #fff;
   color: #000;
+  border: none;
+  cursor: pointer;
 }
 
 .download-btn:hover {
@@ -108,13 +110,11 @@ header {
   animation: rgbAnim 4s linear infinite;
 }
 
-/* Ícone de download */
 .download-btn .download-icon {
   transition: color 0.3s ease;
   color: inherit;
 }
 
-/* 🌈 Animação RGB */
 @keyframes rgbAnim {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -174,7 +174,6 @@ header {
   text-align: center;
 }
 
-/* === TÍTULOS (GALERIA/VIDEO) === */
 .titulo-galeria,
 .video-title {
   font-size: 2.4rem;
@@ -187,7 +186,6 @@ header {
   text-align: center;
 }
 
-/* === GALERIA CONTAINER === */
 .galeria-container {
   display: flex;
   justify-content: center;
@@ -196,7 +194,6 @@ header {
   flex-wrap: wrap;
 }
 
-/* === FUNCIONALIDADES === */
 .app-info {
   max-width: 300px;
   text-align: center;
@@ -223,7 +220,6 @@ header {
   margin-top: 10px;
 }
 
-/* === CARROSSEL === */
 .carousel {
   width: 100%;
   max-width: 650px;
@@ -248,7 +244,6 @@ header {
   border-radius: 20px;
 }
 
-/* === MOCKUP === */
 .video-section {
   display: flex;
   flex-direction: column;
@@ -304,17 +299,14 @@ header {
     flex-direction: column;
     align-items: center;
   }
-
   .carousel {
     max-width: 90%;
     margin: 20px 0;
   }
-
   .phone-mockup {
     width: 220px;
     height: 420px;
   }
-
   .app-info {
     max-width: 90%;
   }
@@ -330,11 +322,6 @@ footer {
 }
 
 /* === MODO ESCURO === */
-.dark-mode body {
-  background-color: #121212;
-  color: #f5f5f5;
-}
-
 .dark-mode .btn {
   background-color: #222;
   color: #f5f5f5;
@@ -346,7 +333,8 @@ footer {
 }
 
 .dark-mode .app-info h3,
-.dark-mode .video-title {
+.dark-mode .video-title,
+.dark-mode .titulo-galeria {
   color: #1e90ff;
 }
 
@@ -356,6 +344,7 @@ footer {
 
 .dark-mode .bloco {
   background: #222;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .dark-mode .home-bar {
@@ -367,7 +356,6 @@ footer {
   color: #fff;
 }
 
-.download-btn .download-icon {
-  color: inherit;
-  transition: color 0.3s ease;
+.dark-mode .download-btn:hover {
+  box-shadow: 0 0 10px rgba(30,144,255,0.8);
 }

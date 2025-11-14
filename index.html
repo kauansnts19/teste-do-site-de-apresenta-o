@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduConnect</title>
   <link rel="stylesheet" href="style.css">
-
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navegação -->
@@ -17,21 +18,21 @@
         <img src="imagens/WhatsApp_Image_2025-11-13_at_17.32.03-removebg-preview.png" alt="Logo EduConnect">
         EduConnect
       </div>
-
       <ul class="nav-links">
         <li><a href="#sobre"><i data-lucide="book-open"></i>Sobre</a></li>
         <li><a href="#galeria"><i data-lucide="image"></i>Galeria</a></li>
         <li><a href="mailto:2ceduconnect@gmail.com"><i data-lucide="mail"></i>Contato</a></li>
         <li>
           <button id="theme-toggle" title="Alternar modo escuro">
-            <i data-lucide="moon" class="theme-icon"></i>
+            <i data-lucide="sun" class="theme-icon"></i>
           </button>
         </li>
         <li>
-          <a href="download/EduConnect.apk" class="download-btn" download>
+          <!-- BOTÃO DE INSTALAÇÃO DO PWA -->
+          <button id="install-btn" class="download-btn">
             <i data-lucide="download" class="download-icon"></i>
-            <span class="download-text">Baixar App</span>
-          </a>
+            <span class="download-text">Instalar App</span>
+          </button>
         </li>
       </ul>
     </nav>
@@ -51,7 +52,7 @@
     <h2>Nossa História</h2>
     <p>
       O <strong>EduConnect</strong> nasceu em 2025, criado por um grupo de estudantes do 2°Ano do Colégio Estadual Marechal Costa e Silva,
-      atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado. 
+      atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado.
       A missão do aplicativo é facilitar a comunicação entre pais, professores e alunos,
       promovendo um ambiente colaborativo e acessível para todos.
     </p>
@@ -59,8 +60,7 @@
 
   <!-- Galeria / Funcionalidades + Carrossel + Mockup -->
   <section id="galeria" class="galeria">
-    <h2 class="titulo-galeria" data-text="Galeria">Galeria</h2>
-
+    <h2 class="titulo-galeria">Galeria</h2>
     <div class="galeria-container">
       <!-- Funcionalidades Principais -->
       <div class="app-info">
@@ -73,7 +73,6 @@
           <p>Acompanhamento de desempenho e evolução acadêmica</p>
         </div>
       </div>
-
       <!-- Carrossel central -->
       <div class="carousel">
         <div class="carousel-track">
@@ -82,13 +81,12 @@
           <div class="carousel-item"><img src="imagens/WhatsApp Image 2025-11-13 at 12.39.14.jpeg" alt="Imagem 3"></div>
         </div>
       </div>
-
       <!-- Mockup do celular com título -->
       <div class="video-section">
         <h3 class="video-title">Veja o App em Ação</h3>
         <div class="phone-mockup">
           <div class="screen">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline preload="metadata">
               <source src="videos/WhatsApp Video 2025-11-13 at 20.18.50.mp4" type="video/mp4">
             </video>
           </div>
@@ -103,45 +101,103 @@
     <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
   </footer>
 
-  <!-- Script do carrossel -->
+  <!-- Scripts -->
+  <!-- Carrossel -->
   <script>
     const track = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
     let index = 0;
-
     function slideCarousel() {
       index = (index + 1) % items.length;
       track.style.transform = `translateX(-${index * 100}%)`;
     }
-
     window.addEventListener('load', () => {
       setInterval(slideCarousel, 3000);
     });
   </script>
 
-  <!-- Script do modo escuro -->
+  <!-- Modo Escuro + Ícone Dinâmico -->
   <script>
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
+    const themeIcon = document.querySelector('.theme-icon');
     const downloadIcon = document.querySelector('.download-icon');
 
     function updateDownloadIcon() {
-      if(body.classList.contains('dark-mode')) {
-        downloadIcon.style.color = '#fff';
-      } else {
-        downloadIcon.style.color = '#000';
-      }
+      downloadIcon.style.color = body.classList.contains('dark-mode') ? '#fff' : '#000';
     }
 
+    function updateThemeIcon() {
+      const isDark = body.classList.contains('dark-mode');
+      themeIcon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
+      lucide.createIcons();
+    }
+
+    // Carregar tema salvo
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
     }
     updateDownloadIcon();
+    updateThemeIcon();
 
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
       localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
       updateDownloadIcon();
+      updateThemeIcon();
+    });
+  </script>
+
+  <!-- INSTALAÇÃO DO PWA -->
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('install-btn');
+    const textSpan = installBtn.querySelector('.download-text');
+    const icon = installBtn.querySelector('.download-icon');
+    const originalText = textSpan.textContent;
+
+    // Captura o evento de instalação
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'flex'; // Mostra o botão
+    });
+
+    // Clique no botão de instalação
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        alert('O app já está instalado ou não está disponível para instalação.');
+        return;
+      }
+
+      // Mostra feedback
+      textSpan.textContent = 'Instalando...';
+      icon.setAttribute('data-lucide', 'loader');
+      lucide.createIcons();
+
+      // Dispara o prompt de instalação
+      deferredPrompt.prompt();
+
+      // Espera resposta do usuário
+      const { outcome } = await deferredPrompt.userChoice;
+
+      if (outcome === 'accepted') {
+        textSpan.textContent = 'Instalado!';
+        setTimeout(() => {
+          installBtn.style.display = 'none'; // Esconde após instalar
+        }, 1500);
+      } else {
+        textSpan.textContent = originalText;
+        icon.setAttribute('data-lucide', 'download');
+        lucide.createIcons();
+      }
+
+      deferredPrompt = null;
+    });
+
+    // Esconde o botão se já estiver instalado
+    window.addEventListener('appinstalled', () => {
+      installBtn.style.display = 'none';
     });
   </script>
 
