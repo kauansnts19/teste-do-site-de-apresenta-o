@@ -10,7 +10,7 @@
   <!-- Fonte Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- PWA CONFIGURAÇÃO (APONTA PARA O APP REAL NO LOVABLE) -->
+  <!-- PWA CONFIGURAÇÃO (APONTA PARA O APP REAL) -->
   <link rel="manifest" href="https://eduplay-guide-41516.lovable.app/manifest.webmanifest">
   <link rel="icon" href="https://eduplay-guide-41516.lovable.app/icon-192x192.png">
   <meta name="theme-color" content="#4A90E2">
@@ -33,8 +33,8 @@
           </button>
         </li>
         <li>
-          <!-- BOTÃO DE INSTALAÇÃO DO PWA (RGB) -->
-          <button id="install-btn" class="download-btn" style="display: none;">
+          <!-- BOTÃO SEMPRE VISÍVEL (REMOVIDO display: none) -->
+          <button id="install-btn" class="download-btn">
             <i data-lucide="download" class="download-icon"></i>
             <span class="download-text">Instalar App</span>
           </button>
@@ -121,7 +121,7 @@
     });
   </script>
 
-  <!-- Modo Escuro + Ícone Dinâmico -->
+  <!-- Mod2 Escuro + Ícone Dinâmico -->
   <script>
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -152,43 +152,54 @@
     });
   </script>
 
-  <!-- INSTALAÇÃO DIRETA DO PWA (SEM ABRIR O SITE) -->
+  <!-- INSTALAÇÃO DIRETA DO PWA (BOTÃO SEMPRE VISÍVEL) -->
   <script>
     let installPrompt = null;
     const installBtn = document.getElementById('install-btn');
     const textSpan = installBtn.querySelector('.download-text');
     const icon = installBtn.querySelector('.download-icon');
 
-    // Captura o evento do PWA real (do Lovable)
+    // Captura o evento do PWA real
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       installPrompt = e;
-      installBtn.style.display = 'flex'; // Mostra o botão
+      // Botão já está visível (não precisa mostrar)
     });
 
-    // Clique → instala direto
+    // Clique → tenta instalar
     installBtn.addEventListener('click', async () => {
-      if (!installPrompt) return;
-
-      textSpan.textContent = 'Instalando...';
-      icon.setAttribute('data-lucide', 'loader');
-      lucide.createIcons();
-
-      installPrompt.prompt();
-      const { outcome } = await installPrompt.userChoice;
-
-      if (outcome === 'accepted') {
-        textSpan.textContent = 'Instalado!';
-        setTimeout(() => {
-          installBtn.style.display = 'none';
-        }, 1500);
-      } else {
-        textSpan.textContent = 'Instalar App';
-        icon.setAttribute('data-lucide', 'download');
+      if (installPrompt) {
+        // Instala direto
+        textSpan.textContent = 'Instalando...';
+        icon.setAttribute('data-lucide', 'loader');
         lucide.createIcons();
-      }
 
-      installPrompt = null;
+        installPrompt.prompt();
+        const { outcome } = await installPrompt.userChoice;
+
+        if (outcome === 'accepted') {
+          textSpan.textContent = 'Instalado!';
+          setTimeout(() => {
+            installBtn.style.display = 'none';
+          }, 1500);
+        } else {
+          textSpan.textContent = 'Instalar App';
+          icon.setAttribute('data-lucide', 'download');
+          lucide.createIcons();
+        }
+        installPrompt = null;
+      } else {
+        // Se não for PWA → abre o app real
+        textSpan.textContent = 'Abrindo App...';
+        icon.setAttribute('data-lucide', 'external-link');
+        lucide.createIcons();
+        window.open('https://eduplay-guide-41516.lovable.app', '_blank');
+        setTimeout(() => {
+          textSpan.textContent = 'Instalar App';
+          icon.setAttribute('data-lucide', 'download');
+          lucide.createIcons();
+        }, 2000);
+      }
     });
 
     // Esconde se já instalado
@@ -196,7 +207,7 @@
       installBtn.style.display = 'none';
     });
 
-    // (Opcional) Service Worker do app real
+    // Service Worker (opcional)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js')
