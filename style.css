@@ -90,11 +90,14 @@ header {
   position: relative;
   overflow: hidden;
   font-size: 1rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background-color: #fff; /* modo claro */
+  color: #000; /* texto modo claro */
 }
 
-.download-btn .download-icon {
-  transition: color 0.3s ease;
+.download-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(30,144,255,0.5);
 }
 
 .download-btn .download-text {
@@ -105,9 +108,10 @@ header {
   animation: rgbAnim 4s linear infinite;
 }
 
-.download-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(30,144,255,0.5);
+/* Ícone de download independente */
+.download-btn .download-icon {
+  transition: color 0.3s ease;
+  color: inherit; /* herdará cor do botão */
 }
 
 /* 🌈 Animação RGB */
@@ -170,32 +174,58 @@ header {
   text-align: center;
 }
 
-/* === TÍTULO GALERIA - MOSTRA APENAS A PRIMEIRA LETRA === */
-.titulo-galeria {
+/* === TÍTULOS === */
+.titulo-galeria,
+.video-title {
   font-size: 2.4rem;
   color: #1e90ff;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 5px rgba(30,144,255,0.3);
-  display: inline-block;
-  position: relative;
+  text-align: center;
 }
 
-/* Esconde todas as letras após a primeira usando ::after */
-.titulo-galeria::after {
-  content: attr(data-text);
-  color: transparent;
-  position: absolute;
-  left: 1.2em; /* ajusta para não sobrepor a primeira letra */
+/* === GALERIA CONTAINER === */
+.galeria-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* === ESPAÇO PARA INFORMAÇÕES DO APP === */
+.app-info {
+  max-width: 300px;
+  text-align: center;
+}
+
+.app-info h3 {
+  color: #1e90ff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.app-info p {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #222;
+}
+
+.bloco {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-top: 10px;
 }
 
 /* === CARROSSEL === */
 .carousel {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 650px; /* aumentado */
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -217,6 +247,74 @@ header {
   border-radius: 20px;
 }
 
+/* === PHONE MOCKUP === */
+.video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 280px;
+  height: 540px;
+  border: 8px solid #333;
+  border-radius: 35px;
+  background: #000;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.home-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* === TELA DO CELULAR === */
+.screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  position: relative;
+}
+
+.screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 1200px) {
+  .galeria-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel {
+    max-width: 90%;
+    margin: 20px 0;
+  }
+
+  .phone-mockup {
+    width: 220px;
+    height: 420px;
+  }
+
+  .app-info {
+    max-width: 90%;
+  }
+}
+
 /* === RODAPÉ === */
 footer {
   background-color: #1e90ff;
@@ -227,6 +325,11 @@ footer {
 }
 
 /* === MODO ESCURO === */
+.dark-mode body {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
 .dark-mode .btn {
   background-color: #222;
   color: #f5f5f5;
@@ -237,6 +340,29 @@ footer {
   color: #fff;
 }
 
+.dark-mode .app-info h3,
+.dark-mode .video-title {
+  color: #f5f5f5;
+}
+
+.dark-mode .app-info p {
+  color: #ddd;
+}
+
+.dark-mode .bloco {
+  background: #222;
+}
+
+.dark-mode .home-bar {
+  background: #666;
+}
+
 .dark-mode .download-btn {
   background-color: #222;
+  color: #fff; /* texto e ícone */
+}
+
+.download-btn .download-icon {
+  color: inherit;
+  transition: color 0.3s ease;
 }
