@@ -71,7 +71,6 @@
 
   <!-- Galeria -->
   <section id="galeria" class="galeria">
-
     <h2 class="titulo-galeria">Galeria</h2>
 
     <div class="galeria-container">
@@ -91,38 +90,32 @@
       <!-- Carrossel -->
       <div class="carousel">
         <div class="carousel-track">
-
           <div class="carousel-item">
             <img src="imagens/IMG-20251104-WA0012 (1).jpg" alt="Imagem 1">
           </div>
-
           <div class="carousel-item">
             <img src="imagens/IMG-20251029-WA0011.jpg" alt="Imagem 2">
           </div>
-
           <div class="carousel-item">
             <img src="imagens/foto_redimensionada_1600x1200.jpg" alt="Imagem 3">
           </div>
         </div>
       </div>
 
-      <!-- Mockup -->
+      <!-- MOCKUP FINAL (fino + câmera discreta) -->
       <div class="video-section">
         <h3 class="video-title">Veja o App em Ação</h3>
 
         <div class="phone-mockup">
-          <div class="screen">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="videos/WhatsApp Video 2025-11-13 at 20.18.50.mp4" type="video/mp4">
-            </video>
-          </div>
+          <video autoplay muted loop playsinline preload="auto" class="screen-video">
+            <source src="videos/WhatsApp Video 2025-11-13 at 20.18.50.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
           <div class="home-bar"></div>
         </div>
       </div>
 
       <div class="break"></div>
-
-      <!-- ====== BLOCOS NOVOS (4 lado a lado) ====== -->
 
       <!-- Brainstorm -->
       <div class="app-info">
@@ -140,7 +133,7 @@
         </div>
       </div>
 
-      <!-- Documentação (CORRIGIDO) -->
+      <!-- Documentação -->
       <div class="app-info">
         <h3>Documentação</h3>
         <div class="bloco">
@@ -164,25 +157,18 @@
     <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
   </footer>
 
-  <!-- Scripts -->
-
-  <!-- Carrossel Automático -->
+  <!-- Scripts (100% originais) -->
   <script>
     const track = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
     let index = 0;
-
     function slideCarousel() {
       index = (index + 1) % items.length;
       track.style.transform = `translateX(-${index * 100}%)`;
     }
-
-    window.addEventListener('load', () => {
-      setInterval(slideCarousel, 3000);
-    });
+    window.addEventListener('load', () => setInterval(slideCarousel, 3000));
   </script>
 
-  <!-- Tema -->
   <script>
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
@@ -192,87 +178,53 @@
     function updateDownloadIcon() {
       downloadIcon.style.color = body.classList.contains('dark-mode') ? '#fff' : '#000';
     }
-
     function updateThemeIcon() {
       const isDark = body.classList.contains('dark-mode');
       themeIcon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
       lucide.createIcons();
     }
-
-    if (localStorage.getItem('theme') === 'dark') {
-      body.classList.add('dark-mode');
-    }
-
-    updateThemeIcon();
-    updateDownloadIcon();
+    if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
+    updateThemeIcon(); updateDownloadIcon();
 
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
       localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-      updateThemeIcon();
-      updateDownloadIcon();
+      updateThemeIcon(); updateDownloadIcon();
     });
   </script>
 
-  <!-- Instalação PWA -->
   <script>
     let installPrompt = null;
     const installBtn = document.getElementById('install-btn');
     const textSpan = installBtn.querySelector('.download-text');
     const icon = installBtn.querySelector('.download-icon');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      installPrompt = e;
-    });
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; });
 
     installBtn.addEventListener('click', async () => {
-
       if (installPrompt) {
-
-        textSpan.textContent = 'Instalando...';
-        icon.setAttribute('data-lucide', 'loader');
-        lucide.createIcons();
-
+        textSpan.textContent = 'Instalando...'; icon.setAttribute('data-lucide', 'loader'); lucide.createIcons();
         installPrompt.prompt();
         const { outcome } = await installPrompt.userChoice;
-
         if (outcome === 'accepted') {
           textSpan.textContent = 'Instalado!';
-          setTimeout(() => {
-            installBtn.style.display = 'none';
-          }, 1500);
+          setTimeout(() => installBtn.style.display = 'none', 1500);
         } else {
-          textSpan.textContent = 'Instalar App';
-          icon.setAttribute('data-lucide', 'download');
-          lucide.createIcons();
+          textSpan.textContent = 'Instalar App'; icon.setAttribute('data-lucide', 'download'); lucide.createIcons();
         }
-
         installPrompt = null;
-
       } else {
-        textSpan.textContent = 'Abrindo App...';
-        icon.setAttribute('data-lucide', 'external-link');
-        lucide.createIcons();
-
+        textSpan.textContent = 'Abrindo App...'; icon.setAttribute('data-lucide', 'external-link'); lucide.createIcons();
         window.open('https://eduplay-guide-41516.lovable.app', '_blank');
-
-        setTimeout(() => {
-          textSpan.textContent = 'Instalar App';
-          icon.setAttribute('data-lucide', 'download');
-          lucide.createIcons();
-        }, 2000);
+        setTimeout(() => { textSpan.textContent = 'Instalar App'; icon.setAttribute('data-lucide', 'download'); lucide.createIcons(); }, 2000);
       }
     });
 
-    window.addEventListener('appinstalled', () => {
-      installBtn.style.display = 'none';
-    });
+    window.addEventListener('appinstalled', () => installBtn.style.display = 'none');
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js')
-          .catch(() => {});
+        navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js').catch(() => {});
       });
     }
   </script>

@@ -1,397 +1,154 @@
 /* === RESET GERAL === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
 
 /* === BASE === */
-body {
-  background-color: #ffffff;
-  color: #222;
-  transition: background 0.3s ease, color 0.3s ease;
-}
+body { background-color: #ffffff; color: #222; transition: background 0.3s ease, color 0.3s ease; }
+.dark-mode { background-color: #121212; color: #f5f5f5; }
 
-.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5;
-}
-
-/* === CABEÇALHO (GRADIENTE) === */
-header {
-  background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 60%) 100%);
-  padding: 15px 30px;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #fff;
-  gap: 10px;
-}
-
-.logo img {
-  height: 70px;
-  width: auto;
-}
+/* === CABEÇALHO === */
+header { background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 60%) 100%); padding: 15px 30px; }
+.navbar { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; font-size: 1.6rem; font-weight: bold; color: #fff; gap: 10px; }
+.logo img { height: 70px; width: auto; }
 
 /* === LINKS === */
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
+.nav-links { list-style: none; display: flex; align-items: center; gap: 18px; }
+.nav-links a { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
+.nav-links a:hover { color: #d1e9ff; }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.3s;
-}
+/* === BOTÕES === */
+#theme-toggle { background: none; border: none; color: #fff; cursor: pointer; transition: transform 0.3s; }
+#theme-toggle:hover { transform: scale(1.2); }
 
-.nav-links a:hover {
-  color: #d1e9ff;
-}
-
-/* === BOTÃO DE TEMA === */
-#theme-toggle {
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-#theme-toggle:hover {
-  transform: scale(1.2);
-}
-
-/* === BOTÃO DE INSTALAÇÃO (PWA) === */
 .download-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 30px;
-  font-weight: 600;
-  position: relative;
-  overflow: hidden;
-  font-size: 1rem;
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  background-color: #fff;
-  color: #000;
-  border: none;
-  cursor: pointer;
+  display: flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 30px;
+  font-weight: 600; background-color: #fff; color: #000; border: none; cursor: pointer;
+  transition: all 0.3s ease;
 }
-
-.download-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(30,144,255,0.5);
-}
-
+.download-btn:hover { transform: scale(1.08); box-shadow: 0 0 10px rgba(30,144,255,0.5); }
 .download-btn .download-text {
   background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-size: 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   animation: rgbAnim 4s linear infinite;
 }
-
-.download-btn .download-icon {
-  transition: color 0.3s ease;
-  color: inherit;
-}
-
-@keyframes rgbAnim {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
+@keyframes rgbAnim { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
 
 /* === HERO === */
-.hero {
-  background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 60%) 100%);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.btn {
-  background-color: white;
-  color: #1e90ff;
-  padding: 10px 22px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #e0f2ff;
-  transform: scale(1.05);
-}
+.hero { background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 60%) 100%); color: white; text-align: center; padding: 80px 20px; }
+.hero h1 { font-size: 2.8rem; margin-bottom: 10px; }
+.hero p { font-size: 1.2rem; margin-bottom: 20px; }
+.btn { background-color: white; color: #1e90ff; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.btn:hover { background-color: #e0f2ff; transform: scale(1.05); }
 
 /* === SOBRE === */
-.sobre {
-  padding: 60px 20px;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.sobre h2 {
-  font-size: 2rem;
-  color: #1e90ff;
-  margin-bottom: 15px;
-}
+.sobre { padding: 60px 20px; text-align: center; max-width: 900px; margin: 0 auto; line-height: 1.6; }
+.sobre h2 { font-size: 2rem; color: #1e90ff; margin-bottom: 15px; }
 
 /* === GALERIA === */
-.galeria {
-  padding: 60px 20px;
-  text-align: center;
+.galeria { padding: 60px 20px; text-align: center; }
+.titulo-galeria, .video-title {
+  font-size: 2.4rem; color: #1e90ff; font-weight: bold; margin-bottom: 20px;
+  text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 5px rgba(30,144,255,0.3);
 }
-
-.titulo-galeria,
-.video-title {
-  font-size: 2.4rem;
-  color: #1e90ff;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px rgba(30,144,255,0.3);
-  text-align: center;
-}
-
-.galeria-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+.galeria-container { display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
 
 /* === BLOCOS === */
-.app-info {
-  max-width: 300px;
-  text-align: center;
-}
-
-.app-info h3 {
-  color: #1e90ff;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.bloco,
-.bloco-extra {
-  background: #f0f0f0;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  margin-top: 10px;
-}
-
-.bloco p,
-.bloco-extra p {
-  margin-bottom: 10px;
-  line-height: 1.5;
-  font-weight: 500;
-}
+.app-info { max-width: 300px; text-align: center; }
+.app-info h3 { color: #1e90ff; margin-bottom: 15px; font-size: 1.5rem; }
+.bloco { background: #f0f0f0; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-top: 10px; }
+.bloco p { margin-bottom: 10px; line-height: 1.5; font-weight: 500; }
 
 /* === CARROSSEL === */
-.carousel {
-  width: 100%;
-  max-width: 650px;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-}
+.carousel { width: 100%; max-width: 650px; border-radius: 20px; overflow: hidden; position: relative; }
+.carousel-track { display: flex; transition: transform 1s ease; }
+.carousel-item { flex: 0 0 100%; }
+.carousel-item img { width: 100%; height: auto; object-fit: contain; border-radius: 20px; }
 
-.carousel-track {
-  display: flex;
-  transition: transform 1s ease;
-}
-
-.carousel-item {
-  flex: 0 0 100%;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 20px;
-}
-
-/* === MOCKUP === */
-.video-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
+/* === MOCKUP FINAL – SUPER FINO E REALISTA (2025) === */
+.video-section { display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 40px 0; }
 
 .phone-mockup {
   position: relative;
-  width: 280px;
-  height: 540px;
-  border: 8px solid #333;
-  border-radius: 35px;
+  width: 290px;
+  height: 600px;
   background: #000;
+  border: 7px solid #1c1c1e;
+  border-radius: 52px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  overflow: hidden;
 }
 
-.home-bar {
+.screen-video {
   position: absolute;
-  bottom: 10px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 94.8%;
+  height: 94.8%;
+  object-fit: cover;
+  border-radius: 46px;
+  z-index: 1;
+}
+
+/* Câmera Dynamic Island – fina e discreta */
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 5px;
-  background: #ccc;
-  border-radius: 3px;
+  width: 110px;
+  height: 26px;
+  background: #1c1c1e;
+  border-radius: 13px;
+  z-index: 3;
 }
 
-.screen video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Barra home */
+.home-bar {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 4px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 2px;
+  z-index: 2;
 }
 
-/* ====================================================================
-   RESPONSIVIDADE COMPLETA (SEM ALTERAR O DESIGN ORIGINAL)
-   ==================================================================== */
+/* === RESPONSIVIDADE === */
 @media (max-width: 1200px) {
-  .galeria-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .carousel {
-    max-width: 90%;
-    margin: 20px 0;
-  }
-
-  .phone-mockup {
-    width: 230px;
-    height: 440px;
-  }
-
-  .app-info {
-    max-width: 90%;
-  }
+  .galeria-container { flex-direction: column; align-items: center; }
+  .carousel { max-width: 90%; margin: 20px 0; }
+  .phone-mockup { width: 260px; height: 540px; }
+  .app-info { max-width: 90%; }
 }
-
 @media (max-width: 900px) {
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .galeria-container {
-    gap: 25px;
-  }
-
-  .carousel {
-    max-width: 95%;
-  }
+  .navbar { flex-direction: column; gap: 15px; text-align: center; }
+  .nav-links { flex-wrap: wrap; justify-content: center; }
+  .hero h1 { font-size: 2.2rem; }
 }
-
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .btn {
-    font-size: 0.9rem;
-    padding: 9px 20px;
-  }
-
-  .app-info {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  .phone-mockup {
-    width: 200px;
-    height: 380px;
-  }
-
-  .titulo-galeria,
-  .video-title {
-    font-size: 2rem;
-  }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .btn { font-size: 0.9rem; padding: 9px 20px; }
+  .app-info { width: 100%; max-width: 350px; }
+  .phone-mockup { width: 220px; height: 460px; }
+  .titulo-galeria, .video-title { font-size: 2rem; }
 }
-
 @media (max-width: 420px) {
-  .phone-mockup {
-    width: 170px;
-    height: 330px;
-  }
-
-  .hero h1 {
-    font-size: 1.6rem;
-  }
+  .phone-mockup { width: 190px; height: 400px; }
+  .hero h1 { font-size: 1.6rem; }
 }
 
 /* === RODAPÉ === */
 footer {
   background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 60%) 100%);
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
+  color: white; text-align: center; padding: 15px; font-size: 0.9rem;
 }
 
 /* === MODO ESCURO === */
-.dark-mode .btn {
-  background-color: #222;
-  color: #f5f5f5;
-}
+.dark-mode .btn { background-color: #222; color: #ffd700; }
+.dark-mode .bloco { background: #222; }
 
-.dark-mode .bloco,
-.dark-mode .bloco-extra {
-  background: #222;
-}
-
-.break {
-  flex-basis: 100%;
-}
+.break { flex-basis: 100%; }
