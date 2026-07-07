@@ -14,7 +14,7 @@
 
   <!-- PWA CONFIGURAÇÃO -->
   <link rel="manifest" href="https://eduplay-guide-55733.lovable.app">
-  <link rel="icon" href="https://eduplay-guide-41516.lovable.app/icon-192x192.png">
+  <link rel="icon" href="https://eduplay-guide-55733.lovable.app/icon-192x192.png">
   <meta name="theme-color" content="#4A90E2">
 </head>
 
@@ -215,7 +215,7 @@
         installPrompt = null;
       } else {
         textSpan.textContent = 'Abrindo App...'; icon.setAttribute('data-lucide', 'external-link'); lucide.createIcons();
-        window.open('https://eduplay-guide-41516.lovable.app', '_blank');
+        window.open('https://eduplay-guide-55733.lovable.app', '_blank');
         setTimeout(() => { textSpan.textContent = 'Instalar App'; icon.setAttribute('data-lucide', 'download'); lucide.createIcons(); }, 2000);
       }
     });
@@ -224,7 +224,7 @@
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js').catch(() => {});
+        navigator.serviceWorker.register('https://eduplay-guide-55733.lovable.app/service-worker.js').catch(() => {});
       });
     }
   </script>

@@ -101,7 +101,7 @@ window.addEventListener('appinstalled', () => {
 // Service Worker (opcional)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('https://eduplay-guide-41516.lovable.app/service-worker.js')
+    navigator.serviceWorker.register('https://eduplay-guide-55733.lovable.app/service-worker.js')
       .catch(() => {});
   });
 }
