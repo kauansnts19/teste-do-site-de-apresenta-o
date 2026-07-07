@@ -49,7 +49,7 @@ let installPrompt = null;
 const installBtn = document.getElementById('install-btn');
 const textSpan = installBtn.querySelector('.download-text');
 const icon = installBtn.querySelector('.download-icon');
-const pwaUrl = 'https://eduplay-guide-41516.lovable.app';
+const pwaUrl = 'https://eduplay-guide-55733.lovable.app/auth';
 
 // Captura o evento de instalação
 window.addEventListener('beforeinstallprompt', (e) => {
